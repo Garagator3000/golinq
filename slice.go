@@ -28,11 +28,11 @@ func (s *Slice[T]) Items() []T {
 	return s.items
 }
 
-func (s *Slice[T]) GetItemByIndex(index int) T {
+func (s *Slice[T]) GetItemByIndex(index int) (T, bool) {
 	if index < 0 || index >= len(s.items) {
-		return *new(T)
+		return *new(T), false
 	}
-	return s.items[index]
+	return s.items[index], true
 }
 
 func (s *Slice[T]) GetFirstIndex(item T) int {
